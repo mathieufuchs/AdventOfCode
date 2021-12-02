@@ -1,0 +1,116 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Puzzles\Input_10_1.txt" />
+    <None Remove="Puzzles\Input_10_2.txt" />
+    <None Remove="Puzzles\Input_11_1.txt" />
+    <None Remove="Puzzles\Input_11_2.txt" />
+    <None Remove="Puzzles\Input_12_1.txt" />
+    <None Remove="Puzzles\Input_12_2.txt" />
+    <None Remove="Puzzles\Input_13_1.txt" />
+    <None Remove="Puzzles\Input_13_2.txt" />
+    <None Remove="Puzzles\Input_14_1.txt" />
+    <None Remove="Puzzles\Input_14_2.txt" />
+    <None Remove="Puzzles\Input_15_1.txt" />
+    <None Remove="Puzzles\Input_15_2.txt" />
+    <None Remove="Puzzles\Input_16_1.txt" />
+    <None Remove="Puzzles\Input_16_2.txt" />
+    <None Remove="Puzzles\Input_17_1.txt" />
+    <None Remove="Puzzles\Input_17_2.txt" />
+    <None Remove="Puzzles\Input_18_1.txt" />
+    <None Remove="Puzzles\Input_18_2.txt" />
+    <None Remove="Puzzles\Input_19_1.txt" />
+    <None Remove="Puzzles\Input_19_2.txt" />
+    <None Remove="Puzzles\Input_1_1.txt" />
+    <None Remove="Puzzles\Input_1_2.txt" />
+    <None Remove="Puzzles\Input_20_1.txt" />
+    <None Remove="Puzzles\Input_20_2.txt" />
+    <None Remove="Puzzles\Input_21_1.txt" />
+    <None Remove="Puzzles\Input_21_2.txt" />
+    <None Remove="Puzzles\Input_22_1.txt" />
+    <None Remove="Puzzles\Input_22_2.txt" />
+    <None Remove="Puzzles\Input_23_1.txt" />
+    <None Remove="Puzzles\Input_23_2.txt" />
+    <None Remove="Puzzles\Input_24_1.txt" />
+    <None Remove="Puzzles\Input_24_2.txt" />
+    <None Remove="Puzzles\Input_25_1.txt" />
+    <None Remove="Puzzles\Input_25_2.txt" />
+    <None Remove="Puzzles\Input_2_1.txt" />
+    <None Remove="Puzzles\Input_2_2.txt" />
+    <None Remove="Puzzles\Input_3_1.txt" />
+    <None Remove="Puzzles\Input_3_2.txt" />
+    <None Remove="Puzzles\Input_4_1.txt" />
+    <None Remove="Puzzles\Input_4_2.txt" />
+    <None Remove="Puzzles\Input_5_1.txt" />
+    <None Remove="Puzzles\Input_5_2.txt" />
+    <None Remove="Puzzles\Input_6_1.txt" />
+    <None Remove="Puzzles\Input_6_2.txt" />
+    <None Remove="Puzzles\Input_7_1.txt" />
+    <None Remove="Puzzles\Input_7_2.txt" />
+    <None Remove="Puzzles\Input_8_1.txt" />
+    <None Remove="Puzzles\Input_8_2.txt" />
+    <None Remove="Puzzles\Input_9_1.txt" />
+    <None Remove="Puzzles\Input_9_2.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Puzzles\Input_10_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_10_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_11_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_11_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_12_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_12_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_13_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_13_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_14_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_14_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_15_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_15_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_16_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_16_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_17_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_17_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_18_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_18_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_19_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_19_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_1_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_1_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_20_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_20_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_21_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_21_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_22_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_22_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_23_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_23_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_24_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_24_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_25_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_25_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_2_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_2_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_3_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_3_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_4_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_4_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_5_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_5_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_6_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_6_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_7_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_7_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_8_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_8_2.txt" />
+    <EmbeddedResource Include="Puzzles\Input_9_1.txt" />
+    <EmbeddedResource Include="Puzzles\Input_9_2.txt" />
+  </ItemGroup>
+
+</Project>
