@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -134,7 +136,10 @@ namespace AdventOfCode
 
             foreach(var c in grid)
             {
-                if (c.Count >= 2) overlaps++;
+                if (c.Count >= 2)
+                {
+                    overlaps++;
+                }
             }
 
             //PrintGrid(grid);
@@ -144,17 +149,29 @@ namespace AdventOfCode
 
         private void PrintGrid(Coordinate[,] grid)
         {
+            Bitmap bmp = new(grid.GetLength(0), grid.GetLength(1));
+
             for (int x = 0; x < grid.GetLength(0); x++)
             {
-                var gridToString = "";
+                //var gridToString = "";
                 for (int y = 0; y < grid.GetLength(1); y++)
                 {
                     var count = grid[y, x].Count;
-                    gridToString += count == 0 ? "." : count.ToString();
+                    //gridToString += count == 0 ? "." : count.ToString();
+
+                    Color c = count switch
+                    {
+                        0 => Color.Black,
+                        _ => Color.Red
+                    };
+
+                    bmp.SetPixel(y, x, c);
                 }
 
-                Console.WriteLine(gridToString);
+                //Console.WriteLine(gridToString);
             }
+
+            bmp.Save("myfile.png", ImageFormat.Png);
         }
 
         private string UseDummyInput()

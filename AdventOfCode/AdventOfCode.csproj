@@ -113,4 +113,8 @@
     <EmbeddedResource Include="Puzzles\Input_9_2.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
 </Project>
