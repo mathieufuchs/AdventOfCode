@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode;
+using System.Threading.Tasks;
 
-namespace AdventOfCodeTests
+namespace AdventOfCode.Tests
 {
     [TestClass]
     public class Solver6Tests
@@ -16,5 +16,11 @@ namespace AdventOfCodeTests
             var result = Solver6.Solve(fishes, iterations);
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public async Task Solve1() => await SolverTestHelper.Solve(6, 1, "377263");
+
+        [TestMethod]
+        public async Task Solve2() => await SolverTestHelper.Solve(6, 2, "1695929023803");
     }
 }
