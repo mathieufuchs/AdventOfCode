@@ -24,7 +24,7 @@
             return result.ToString();
         }
 
-        private long Solve(int[] numbers, int iterations)
+        public static long Solve(int[] numbers, int iterations)
         {
             var counters = Enumerable.Range(0, 9).Select(i => numbers.LongCount(n => n == i)).ToArray();
 
