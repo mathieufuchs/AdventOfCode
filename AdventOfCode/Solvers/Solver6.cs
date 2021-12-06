@@ -9,60 +9,41 @@
         {
             //input = UseDummyInput();
 
-            var rows = input.Split(",").Select(r => int.Parse(r)).ToList();
+            var rows = input.Split(",").Select(r => int.Parse(r)).ToArray();
 
-            for(var i = 0; i < 80; i++)
-            {
-                var length = rows.Count;
-                for(var j = 0; j < length; j++)
-                {
-                    if(rows[j] == 0)
-                    {
-                        rows[j] = 6;
-                        rows.Add(8);
-                    }
-                    else
-                    {
-                        rows[j]--;
-                    }
-                }
-            }
+            var result = Solve(rows, 80);
 
-            return rows.Count.ToString();
+            return result.ToString();
         }
         public async Task<string> Solve2(string input)
         {
-            //input = UseDummyInput();
+            var rows = input.Split(",").Select(r => int.Parse(r)).ToArray();
 
-            var rows = input.Split(",").Select(r => int.Parse(r)).ToList();
+            var result = Solve(rows, 256);
 
-            var fishes = new Dictionary<int, long>() {
-                {0, 0},
-                {1, rows.Count(r => r == 1)},
-                {2, rows.Count(r => r == 2)},
-                {3, rows.Count(r => r == 3)},
-                {4, rows.Count(r => r == 4)},
-                {5, rows.Count(r => r == 5)},
-                {6, rows.Count(r => r == 6)},
-                {7, 0},
-                {8, 0},
-            };
+            return result.ToString();
+        }
 
-            for (var i = 0; i < 256; i++)
+        private long Solve(int[] numbers, int iterations)
+        {
+            var counters = Enumerable.Range(0, 9).Select(i => numbers.LongCount(n => n == i)).ToArray();
+
+            for(var iter = 0; iter < iterations; iter++)
             {
-                var zeros = fishes[0];
-                fishes[0] = fishes[1];
-                fishes[1] = fishes[2]; 
-                fishes[2] = fishes[3]; 
-                fishes[3] = fishes[4]; 
-                fishes[4] = fishes[5]; 
-                fishes[5] = fishes[6]; 
-                fishes[6] = zeros + fishes[7]; 
-                fishes[7] = fishes[8];
-                fishes[8] = zeros;
+                long zeros = counters[0];
+
+                for (var i = 0; i < 9; i++)
+                {
+                    counters[i] = i switch
+                    {
+                        8 => zeros,
+                        6 => zeros + counters[i + 1],
+                        _ => counters[i + 1]
+                    };
+                }
             }
 
-            return fishes.Sum(f => f.Value).ToString();
+            return counters.Sum();
         }
 
         private string UseDummyInput()
