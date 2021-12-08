@@ -65,67 +65,9 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
         {
             var integerTranslation = "";
 
-            foreach(var item in row.Outputs)
+            foreach(var output in row.Outputs)
             {
-                if (item == row.C0)
-                {
-                    integerTranslation += "0";
-                    continue;
-                }
-
-                if (item == row.C1)
-                {
-                    integerTranslation += "1";
-                    continue;
-                }
-
-                if (item == row.C2)
-                {
-                    integerTranslation += "2";
-                    continue;
-                }
-
-                if (item == row.C3)
-                {
-                    integerTranslation += "3";
-                    continue;
-                }
-
-                if (item == row.C4)
-                {
-                    integerTranslation += "4";
-                    continue;
-                }
-
-                if (item == row.C5)
-                {
-                    integerTranslation += "5";
-                    continue;
-                }
-
-                if (item == row.C6)
-                {
-                    integerTranslation += "6";
-                    continue;
-                }
-
-                if (item == row.C7)
-                {
-                    integerTranslation += "7";
-                    continue;
-                }
-
-                if (item == row.C8)
-                {
-                    integerTranslation += "8";
-                    continue;
-                }
-
-                if (item == row.C9)
-                {
-                    integerTranslation += "9";
-                    continue;
-                }
+                integerTranslation += row.Numbers[output];
             }
 
             return int.Parse(integerTranslation);
@@ -136,16 +78,7 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
 
     public class Day8Row
     {
-        public string C0;
-        public string C1;
-        public string C2;
-        public string C3;
-        public string C4;
-        public string C5;
-        public string C6;
-        public string C7;
-        public string C8;
-        public string C9;
+        public Dictionary<string, string> Numbers = new();
 
         public Day8Row()
         {
@@ -157,34 +90,43 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
             Signals = signals.Select(s => Sort(s));
             Outputs = outputs.Select(s => Sort(s));
 
-            InitWires();
+            InitNumbers();
         }
 
-        private string Sort(string input)
+        private static string Sort(string input)
         {
             var chars = input.ToCharArray();
             Array.Sort(chars);
             return new string(chars);
         }
 
-        private void InitWires()
+        private void InitNumbers()
         {
-            C1 = Signals.Single(s => s.Length == 2);
-            C7 = Signals.Single(s => s.Length == 3);
-            C4 = Signals.Single(s => s.Length == 4);
-            C8 = Signals.Single(s => s.Length == 7);
+            var c1 = Signals.Single(s => s.Length == 2);
+            var c7 = Signals.Single(s => s.Length == 3);
+            var c4 = Signals.Single(s => s.Length == 4);
+            var c8 = Signals.Single(s => s.Length == 7);
 
+            var c3 = Signals.Single(s => s.Length == 5 && c1.All(c => s.Contains(c)));
+            var c9 = Signals.Single(s => s.Length == 6 && c4.All(c => s.Contains(c)));
 
-            C3 = Signals.Single(s => s.Length == 5 && C1.All(c => s.Contains(c)));
-            C9 = Signals.Single(s => s.Length == 6 && C4.All(c => s.Contains(c)));
+            var bottomLeft = c8.Except(c9).Single();
+            var c2 = Signals.Single(s => s.Length == 5 && s.Contains(bottomLeft));
 
-            var bottomLeft = C8.Except(C9).Single();
+            var c5 = Signals.Single(s => s.Length == 5 && s != c2 && s != c3);
+            var c6 = Signals.Single(s => s.Length == 6 && s != c9 && c5.All(c => s.Contains(c)));
+            var c0 = Signals.Single(s => s.Length == 6 && s != c9 && s != c6);
 
-            C2 = Signals.Single(s => s.Length == 5 && s.Contains(bottomLeft));
-            C5 = Signals.Single(s => s.Length == 5 && s != C2 && s != C3);
-
-            C6 = Signals.Single(s => s.Length == 6 && s != C9 && C5.All(c => s.Contains(c)));
-            C0 = Signals.Single(s => s.Length == 6 && s != C9 && s != C6);
+            Numbers.Add(c0, "0");
+            Numbers.Add(c1, "1");
+            Numbers.Add(c2, "2");
+            Numbers.Add(c3, "3");
+            Numbers.Add(c4, "4");
+            Numbers.Add(c5, "5");
+            Numbers.Add(c6, "6");
+            Numbers.Add(c7, "7");
+            Numbers.Add(c8, "8");
+            Numbers.Add(c9, "9");
         }
 
         public IEnumerable<string> Signals { get; set; }
