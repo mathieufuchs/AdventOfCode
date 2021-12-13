@@ -4,7 +4,7 @@
     {
         public static IEnumerable<string> GetRows(this string input)
         {
-            return input.Split("\n");
+            return input.Split(Environment.NewLine);
         }
 
         public static IEnumerable<string[]> GetCommandsSeparatedBySpaces(this IEnumerable<string> rows)
