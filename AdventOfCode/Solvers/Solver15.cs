@@ -1,4 +1,7 @@
-﻿namespace AdventOfCode
+﻿using System.Drawing;
+using System.Drawing.Imaging;
+
+namespace AdventOfCode
 {
     public class Solver15 : ISolver
     {
@@ -55,6 +58,7 @@
                 {
                     // We found cheepest route :)
                     //Console.WriteLine(checkTile.Path);
+                    PrintGrid(checkTile.GetPrintable(), xSize+1);
                     return checkTile.TotalCost;
                 }
 
@@ -154,6 +158,26 @@
 
             return result?.ToString() ?? "Cheapest route not found :(";
         }
+
+        private static void PrintGrid(IEnumerable<(int x, int y)> path, int size)
+        {
+            Bitmap bmp = new(size, size);
+
+            for (int x = 0; x < size; x++)
+            {
+                for (int y = 0; y < size; y++)
+                {
+                    bmp.SetPixel(y, x, Color.Black);
+                }
+            }
+
+            foreach(var (x, y) in path)
+            {
+                bmp.SetPixel(x, y, Color.Red);
+            }
+
+            bmp.Save("myfile.png", ImageFormat.Png);
+        }
     }
 
     class Tile
@@ -174,5 +198,9 @@
         public int TotalCost => OwnCost + Parent?.TotalCost ?? 0;
 
         public string Path => Parent?.Path + OwnCost;
+
+        public IEnumerable<(int x, int y)> GetPrintable() {
+            return Parent?.GetPrintable().Prepend(Pos) ?? new (int, int)[] { Pos };
+        }
     }
 }
